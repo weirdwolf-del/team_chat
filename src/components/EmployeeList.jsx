@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { User } from "lucide-react";
 
-export default function EmployeeList({ onSelectEmployee, loggedInUserId }) {
+export default function EmployeeList({ onSelectEmployee, loggedInUserId, }) {
     const [employees, setEmployees] = useState([]);
     const apiUrl = process.env.NEXT_PUBLIC_API_URL;
 

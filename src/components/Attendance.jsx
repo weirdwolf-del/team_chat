@@ -21,7 +21,7 @@ export default function Attendance({ loggedInUserId, loggedInUserName }) {
             .padStart(2, "0")}:${s.toString().padStart(2, "0")}`;
     };
 
-    const handleCheckIn = () => {
+    const handleCheckIn = async () => {
         if (isCheckedIn) return;
 
         const startTime = Date.now(); // current time in milliseconds
@@ -40,6 +40,24 @@ export default function Attendance({ loggedInUserId, loggedInUserName }) {
         }, 1000);
 
         //console.log("✅ Checked In at:", new Date().toLocaleTimeString());
+        // 👇 NEW API CALL (does NOT affect checkout system)
+        try {
+            await fetch(`${apiUrl}/attendance/checkin-log`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    userId: loggedInUserId,
+                    name: loggedInUserName,
+                    date: new Date().toLocaleDateString("en-GB"),
+                    checkInTime: new Date().toLocaleTimeString()
+                })
+            });
+        } catch (error) {
+            console.log("Check-in log error:", error);
+        }
+
     };
 
     const handleCheckOut = () => {

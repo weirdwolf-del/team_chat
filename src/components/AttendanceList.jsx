@@ -60,10 +60,10 @@ export default function AttendanceList({ loggedInUserId, loggedInUserName, role 
         });
         setFilteredRecords(filtered);
     };
-
+    console.log("Filtered records:", filteredRecords);
     // 🧮 Calculate total duration for each record
     const getTotalDuration = (durations) => {
-        if (!durations || durations.length === 0) return "-";
+        if (!durations || durations.length === 0) return " ";
         const totalMinutes = durations.reduce(
             (sum, d) => sum + toMinutes(d),
             0
@@ -77,11 +77,11 @@ export default function AttendanceList({ loggedInUserId, loggedInUserName, role 
     return (
         <>
             {role !== "admin" ? (
-                <Card className="bg-white shadow-md mt-6 p-6 text-center text-gray-600">
+                <Card className="bg-white shadow-md mt-6 p-6 text-center text-gray-600 ">
                     
                     
                     {/* 📋 Table */}
-                    <div className="overflow-x-auto">
+                    <div className="overflow-x-auto ">
                         <table className="w-full text-sm border-collapse">
                             <thead>
                                 <tr className="bg-gray-100 text-left">
@@ -93,7 +93,7 @@ export default function AttendanceList({ loggedInUserId, loggedInUserName, role 
                                     <th className="p-2 border">Total Time</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody className="divide-y ">
                                 {filteredRecords.length > 0 ? (
                                     filteredRecords.map((item, index) => {
                                         // 🔍 Show only data of logged-in user
@@ -135,7 +135,7 @@ export default function AttendanceList({ loggedInUserId, loggedInUserName, role 
                     <CardContent>
                         {/* 🔍 Filters */}
                         <div className="flex flex-wrap gap-3 mb-4">
-                            {/* Name Filter 
+                                {/* Name Filter   */}
                             <Input
                                 type="text"
                                 placeholder="Search by name..."
@@ -144,7 +144,7 @@ export default function AttendanceList({ loggedInUserId, loggedInUserName, role 
                                 className="max-w-xs"
                             />
                             
-                            */}
+                          
                             
                             <Input
                                 type="date"
@@ -157,8 +157,9 @@ export default function AttendanceList({ loggedInUserId, loggedInUserName, role 
 
                         {/* 📋 Table */}
                         <div className="overflow-x-auto">
+                                <div className="max-h-[500px] overflow-y-auto">
                             <table className="w-full text-sm border-collapse">
-                                <thead>
+                                        <thead className="sticky top-0 bg-gray-100 z-20">
                                     <tr className="bg-gray-100 text-left">
                                         <th className="p-2 border">#</th>
                                         <th className="p-2 border">Name</th>
@@ -168,10 +169,10 @@ export default function AttendanceList({ loggedInUserId, loggedInUserName, role 
                                         <th className="p-2 border">Total Time</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody className=" divide-y">
                                     {filteredRecords.length > 0 ? (
                                         filteredRecords.map((item, index) => (
-                                            <tr key={item._id} className="hover:bg-gray-50">
+                                            <tr key={item._id} className="hover:bg-gray-50 ">
                                                 <td className="p-2 border">{index + 1}</td>
                                                 <td className="p-2 border">{item.name}</td>
                                                 <td className="p-2 border">{item.date}</td>
@@ -191,6 +192,7 @@ export default function AttendanceList({ loggedInUserId, loggedInUserName, role 
                                     )}
                                 </tbody>
                             </table>
+                            </div>
                         </div>
                     </CardContent>
                 </Card>

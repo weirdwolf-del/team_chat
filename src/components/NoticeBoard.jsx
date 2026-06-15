@@ -60,7 +60,7 @@ export default function NoticeBoard({ role, userName }) {
                 <CardTitle>📢 Notice Board</CardTitle>
             </CardHeader>
 
-            <CardContent className="space-y-4">
+            <CardContent className="space-y-2">
                 
 
                 {/* 🔹 Notices List */}
@@ -83,7 +83,7 @@ export default function NoticeBoard({ role, userName }) {
 
                 {/* 🔹 Admin Form */}
                 {isAdmin && (
-                    <div className="space-y-2 border p-3 rounded-md">
+                    <div className="space-y-2 border p-2 rounded-md">
                         <Input
                             placeholder="Notice title"
                             value={title}

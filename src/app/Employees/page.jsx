@@ -106,7 +106,7 @@ export default function Employees({
             <div className="flex gap-6 h-[calc(100vh-120px)]">
 
                 {/* Left Employee List */}
-                <div className="w-[320px]">
+                <div className="w-[180px] md:w-[280px] ">
                     <EmpDetailsList
                         loggedInUserId={loggedInUserId}
                         loggedInUserRole={loggedInUserRole}
@@ -129,9 +129,9 @@ export default function Employees({
                         <div className="space-y-6">
 
                             {/* Employee Info */}
-                            <div className="grid grid-cols-3 gap-4">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 w-70 md:w-full">
                                 <Card>
-                                    <CardContent className="p-6">
+                                    <CardContent className="p-4">
 
                                         <div className="flex items-center  gap-4">
 
@@ -160,7 +160,7 @@ export default function Employees({
                                     </CardContent>
                                 </Card>
                                 <Card>
-                                    <CardContent className="p-4">
+                                    <CardContent className="p-4 w-full">
                                         <div className="flex justify-between">
                                             <div>
                                                 <p className="text-gray-500 text-sm">
@@ -191,7 +191,8 @@ export default function Employees({
                                 </Card>
                             </div>
                             {/* Summary Cards */}
-                            <div className="grid grid-cols-4 gap-4">
+                            <div className="grid grid-cols-1 md:grid-cols-4 gap-4
+                             w-70 md:w-full">
 
                                 <Card className="border-0 shadow-md hover:shadow-lg transition-all">
                                     <CardContent className="p-4">
@@ -266,8 +267,8 @@ export default function Employees({
                             </div>
 
                             {/* Monthly Attendance Graph and Salary graph */}
-                            <Card>
-                                <div className="grid gap-4 p-6">
+                            <Card className="w-70 md:w-full">
+                                <div className="grid gap-4 p-6 ">
                                     <EmployeeAttendanceAnalytics
                                         employee={selectedEmployee}
                                         attendanceData={attendanceRecordsForSelectedEmployee}
